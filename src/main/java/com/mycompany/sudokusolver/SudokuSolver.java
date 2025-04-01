@@ -17,11 +17,12 @@ public class SudokuSolver {
         
         Matrix m = new Matrix();
         System.out.println(m.toString());
-        m.removeNumberFromMatrix(1, 1, 1);
-        m.removeNumberFromMatrix(9, 1, 1);
+        //m.removeNumberFromMatrix(1, 1, 1);
+        //m.removeNumberFromMatrix(9, 1, 1);
         //m.removeAllNumbersInMatrix(2, 2);
-        //m.removeNumberInRow(9, 3, 4);
-        //m.removeNumberInCol(2, 1, 1);
+        //m.removeNumberInRow(1, 1);
+        //m.removeNumberInCol(1, 1);
+        m.removeNumberInAQuadrant(2, 1);
         System.out.println(m.toString());
     }
 }

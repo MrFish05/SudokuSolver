@@ -14,6 +14,9 @@ public class Matrix {
     private ArrayList<Integer>[][] matrix;
     private ArrayList<Integer> matrixNumber;
     
+    /**
+     * Creates a Matrix - Array and fills it with numbers
+     */
     public Matrix() {
         this.matrix = new ArrayList[9][9];
         matrixNumber = new ArrayList<>();
@@ -28,11 +31,21 @@ public class Matrix {
         }
     }
     
+    /**
+     * Removes a specific number in a specific field at its cordinates
+     * @param number
+     * @param xPos
+     * @param yPos 
+     */
     public void removeNumberFromMatrix(int number, int xPos, int yPos) {
         if(number <= 9 && number >= 1) {
             if(xPos < 10 && xPos > 0) {
                 if(yPos < 10 && yPos > 0) {
-                    this.matrix[xPos - 1][yPos - 1].remove(number - 1);
+                    for(int i = 0; i < matrix[xPos - 1][yPos - 1].size(); i++) {
+                        if(matrix[xPos - 1][yPos - 1].get(i).equals(number)) {
+                            matrix[xPos - 1][yPos - 1].remove(i);
+                        }
+                    }
                 } else {
                     System.out.println("ERROR: wrong yPos ["+yPos+"]!");
                 }
@@ -44,11 +57,20 @@ public class Matrix {
         }
     }
     
-    public void removeNumberInRow(int number, int xPos, int yPos) {
+    /**
+     * Removes the same number in the entire row
+     * @param number
+     * @param xPos 
+     */
+    public void removeNumberInRow(int number, int xPos) {
         if(number <= 9 && number >= 1) {
             if(xPos < 10 && xPos > 0) {
                 for(int i = 0; i < 9; i++) {
-                    this.matrix[xPos - 1][i].remove(number - 1);
+                    for(int j = 0; j < matrix[xPos - 1][i].size(); j++){
+                        if(matrix[xPos - 1][i].get(j).equals(number)) {
+                            this.matrix[xPos - 1][i].remove(j);
+                        }
+                    }
                 }
             } else {
                 System.out.println("ERROR: wrong xPos ["+xPos+"]!");
@@ -58,11 +80,20 @@ public class Matrix {
         }
     }
     
-    public void removeNumberInCol(int number, int xPos, int yPos) {
+    /**
+     * Removes the same number in the entire colum
+     * @param number
+     * @param yPos 
+     */
+    public void removeNumberInCol(int number, int yPos) {
         if(number <= 9 && number >= 1) {
             if(yPos < 10 && yPos > 0) {
                 for(int i = 0; i < 9; i++) {
-                    this.matrix[i][yPos - 1].remove(number - 1);
+                    for(int j = 0; j < matrix[i][yPos - 1].size(); j++){
+                        if(matrix[i][yPos - 1].get(j).equals(number)) {
+                            this.matrix[i][yPos - 1].remove(j);
+                        }
+                    }
                 }
             } else {
                 System.out.println("ERROR: wrong yPos ["+yPos+"]!");
@@ -72,6 +103,11 @@ public class Matrix {
         }
     }
     
+    /**
+     * Removes all Numbers in the specific Field at its cordinates
+     * @param xPos
+     * @param yPos 
+     */
     public void removeAllNumbersInMatrix(int xPos, int yPos) {
         if(xPos < 10 && xPos > 0) {
                 if(yPos < 10 && yPos > 0) {
@@ -82,6 +118,72 @@ public class Matrix {
             } else {
                 System.out.println("ERROR: wrong xPos ["+xPos+"]!");
             }
+    }
+    
+    /**
+     * Removes a number from a specific quadrant
+     * @param quadrantNumber
+     * @param number 
+     */
+    public void removeNumberInAQuadrant(int quadrantNumber, int number) {
+        int xPos = 0;
+        int yPos = 0;
+        
+        switch(quadrantNumber) {
+            case 1:
+                xPos = 0;
+                yPos = 0;
+                break;
+            case 2:
+                xPos = 0;
+                yPos = 3;
+                break;
+            case 3:
+                xPos = 0;
+                yPos = 6;
+                break;
+            case 4:
+                xPos = 3;
+                yPos = 0;
+                break;
+            case 5:
+                xPos = 3;
+                yPos = 3;
+                break;
+            case 6:
+                xPos = 3;
+                yPos = 6;
+                break;
+            case 7:
+                xPos = 6;
+                yPos = 0;
+                break;
+            case 8:
+                xPos = 6;
+                yPos = 3;
+                break;
+            case 9:
+                xPos = 6;
+                yPos = 6;
+                break;
+            default:
+                System.out.println("ERROR: Quadrant dos not exist!");
+                break;
+        }
+        
+        for(int i = xPos; i < xPos + 3; i++) {
+            for(int j = yPos; j < yPos + 3; j++) {
+                for(int k = 0; k < matrix[i][j].size(); k++) {
+                    if(matrix[i][j].get(k).equals(number)) {
+                        matrix[i][j].remove(k);
+                    }
+                }
+            }
+        }
+    }
+    
+    public void findLonelyNumber() {
+        
     }
     
     @Override
