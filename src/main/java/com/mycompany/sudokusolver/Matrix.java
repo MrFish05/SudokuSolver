@@ -183,7 +183,13 @@ public class Matrix {
     }
     
     public void findLonelyNumber() {
-        
+        for(int i = 0; i < 9; i++) {
+            for(int j = 0; i < 9; j++) {
+                if(matrix[i][j].size() == 1) {
+                    matrix[i][j].get(0); //Field set
+                }
+            }
+        }
     }
     
     @Override
