@@ -12,17 +12,20 @@ public class SudokuSolver {
 
     public static void main(String[] args) {
         Field f = new Field();
-        f.setNumberInField(1, 5, 5);
-        //System.out.println(f.toString());
+        System.out.println(f.toString());
         
         Matrix m = new Matrix();
-        System.out.println(m.toString());
-        //m.removeNumberFromMatrix(1, 1, 1);
-        //m.removeNumberFromMatrix(9, 1, 1);
-        //m.removeAllNumbersInMatrix(2, 2);
-        //m.removeNumberInRow(1, 1);
-        //m.removeNumberInCol(1, 1);
-        m.removeNumberInAQuadrant(2, 1);
+        m.removeNumberFromMatrix(1, 1, 1);
+        m.removeNumberFromMatrix(2, 1, 1);
+        m.removeNumberFromMatrix(3, 1, 1);
+        m.removeNumberFromMatrix(4, 1, 1);
+        m.removeNumberFromMatrix(5, 1, 1);
+        m.removeNumberFromMatrix(6, 1, 1);
+        m.removeNumberFromMatrix(7, 1, 1);
+        m.removeNumberFromMatrix(8, 1, 1);
+        
+        m.findLonelyNumber(f);
+        
         System.out.println(m.toString());
     }
 }

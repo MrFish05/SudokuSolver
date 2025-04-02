@@ -182,11 +182,11 @@ public class Matrix {
         }
     }
     
-    public void findLonelyNumber() {
-        for(int i = 0; i < 9; i++) {
-            for(int j = 0; i < 9; j++) {
-                if(matrix[i][j].size() == 1) {
-                    matrix[i][j].get(0); //Field set
+    public void findLonelyNumber(Field f) {
+        for(int i = 1; i < 10; i++) {
+            for(int j = 1; i < 10; j++) {
+                if(matrix[i-1][j-1].size() == 1) {
+                    f.setNumberInField( matrix[i][j].get(0), i, j);
                 }
             }
         }
