@@ -27,5 +27,6 @@ public class SudokuSolver {
         m.findLonelyNumber(f);
         
         System.out.println(m.toString());
+        System.out.println(f.toString());
     }
 }
