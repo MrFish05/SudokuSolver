@@ -182,10 +182,34 @@ public class Matrix {
         }
     }
     
-    public void clearMatrixFromExistendNumbers(Field f) {
+    public void fieldScanner(Field f) {
         for(int i = 0; i < 9; i++) {
             for(int j = 0; j < 9; j++) {
-
+                if(f.getField()[i][j] > 0) {
+                    matrix[i][j].clear();
+                    removeNumberInRow(f.getField()[i][j], i + 1);
+                    removeNumberInCol(f.getField()[i][j], j + 1);
+                    
+                    if(i < 3 && j < 3) {
+                        removeNumberInAQuadrant(1, f.getField()[i][j]);
+                    } else if(i < 3 && j < 6) {
+                        removeNumberInAQuadrant(2, f.getField()[i][j]);
+                    } else if(i < 3 && j < 9) {
+                        removeNumberInAQuadrant(3, f.getField()[i][j]);
+                    } else if(i < 6 && j < 3) {
+                        removeNumberInAQuadrant(4, f.getField()[i][j]);
+                    } else if(i < 6 && j < 6) {
+                        removeNumberInAQuadrant(5, f.getField()[i][j]);
+                    } else if(i < 6 && j < 9) {
+                        removeNumberInAQuadrant(6, f.getField()[i][j]);
+                    } else if(i < 9 && j < 3) {
+                        removeNumberInAQuadrant(7, f.getField()[i][j]);
+                    } else if(i < 9 && j < 6) {
+                        removeNumberInAQuadrant(8, f.getField()[i][j]);
+                    } else if(i < 9 && j < 9) {
+                        removeNumberInAQuadrant(9, f.getField()[i][j]);
+                    }
+                }
             }
         }
     }

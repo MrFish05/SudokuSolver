@@ -40,6 +40,10 @@ public class Field {
         }
     }
     
+    public int[][] getField() {
+        return this.field;
+    }
+    
     /**
      * Prints the field with its values
      * @return field
