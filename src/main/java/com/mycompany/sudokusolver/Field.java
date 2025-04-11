@@ -44,6 +44,24 @@ public class Field {
         return this.field;
     }
     
+    public boolean gameFinished() {
+        int x = 0;
+        
+        for(int i = 0; i < 9; i++) {
+            for(int j = 0; j < 9; j++) {
+                if(field[i][j] > 0) {
+                    x++;
+                }
+            }
+        }
+        
+        if(x == 81) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     /**
      * Prints the field with its values
      * @return field

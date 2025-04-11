@@ -223,6 +223,7 @@ public class Matrix {
             for(int j = 0; j < 9; j++) {
                 if(matrix[i][j].size() == 1) {
                     f.setNumberInField(matrix[i][j].get(0), i+1, j+1);
+                    matrix[i][j].clear();
                 }
             }
         }

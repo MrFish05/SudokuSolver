@@ -11,49 +11,48 @@ package com.mycompany.sudokusolver;
 public class SudokuSolver {
 
     public static void main(String[] args) {
-        Field f = new Field();
-        Matrix m = new Matrix();
-        
+        //Field f = new Field();
+        Matrix m = new Matrix();      
         Field spf = new Field(); 
-        spf.setNumberInField(1, 4, 4); 
-        spf.setNumberInField(1, 8, 8); 
-        spf.setNumberInField(1, 9, 7); 
-        spf.setNumberInField(2, 2, 8); 
-        spf.setNumberInField(2, 4, 7); 
-        spf.setNumberInField(2, 7, 4); 
-        spf.setNumberInField(2, 8, 9); 
-        spf.setNumberInField(3, 1, 3); 
-        spf.setNumberInField(3, 4, 9); 
-        spf.setNumberInField(3, 5, 2); 
-        spf.setNumberInField(3, 8, 1); 
-        spf.setNumberInField(4, 3, 1); 
-        spf.setNumberInField(4, 4, 6); 
-        spf.setNumberInField(4, 5, 7); 
-        spf.setNumberInField(4, 8, 4); 
-        spf.setNumberInField(5, 1, 6); 
-        spf.setNumberInField(5, 2, 4); 
-        spf.setNumberInField(5, 4, 8); 
-        spf.setNumberInField(5, 5, 3); 
-        spf.setNumberInField(5, 7, 2); 
-        spf.setNumberInField(5, 8, 7); 
-        spf.setNumberInField(5, 9, 5); 
-        spf.setNumberInField(6, 2, 2); 
-        spf.setNumberInField(6, 3, 7); 
-        spf.setNumberInField(6, 4, 5); 
-        spf.setNumberInField(6, 5, 4); 
-        spf.setNumberInField(6, 6, 9); 
-        spf.setNumberInField(6, 8, 3); 
-        spf.setNumberInField(7, 3, 6); 
-        spf.setNumberInField(7, 5, 5); 
-        spf.setNumberInField(7, 8, 2); 
-        spf.setNumberInField(8, 1, 2); 
-        spf.setNumberInField(8, 2, 1); 
-        spf.setNumberInField(8, 3, 8); 
-        spf.setNumberInField(8, 7, 7); 
-        spf.setNumberInField(9, 2, 5); 
-        spf.setNumberInField(9, 3, 3); 
-        spf.setNumberInField(9, 6, 4);
- 
+        
+        spf.setNumberInField(4, 1, 4); 
+        spf.setNumberInField(8, 1, 8); 
+        spf.setNumberInField(7, 1, 9); 
+        spf.setNumberInField(8, 2, 2); 
+        spf.setNumberInField(7, 2, 4); 
+        spf.setNumberInField(4, 2, 7); 
+        spf.setNumberInField(9, 2, 8); 
+        spf.setNumberInField(3, 3, 1); 
+        spf.setNumberInField(9, 3, 4); 
+        spf.setNumberInField(2, 3, 5); 
+        spf.setNumberInField(1, 3, 8); 
+        spf.setNumberInField(1, 4, 3); 
+        spf.setNumberInField(6, 4, 4); 
+        spf.setNumberInField(7, 4, 5); 
+        spf.setNumberInField(4, 4, 8); 
+        spf.setNumberInField(6, 5, 1); 
+        spf.setNumberInField(4, 5, 2); 
+        spf.setNumberInField(8, 5, 4); 
+        spf.setNumberInField(3, 5, 5); 
+        spf.setNumberInField(2, 5, 7); 
+        spf.setNumberInField(7, 5, 8); 
+        spf.setNumberInField(5, 5, 9); 
+        spf.setNumberInField(2, 6, 2); 
+        spf.setNumberInField(7, 6, 3); 
+        spf.setNumberInField(5, 6, 4); 
+        spf.setNumberInField(4, 6, 5); 
+        spf.setNumberInField(9, 6, 6); 
+        spf.setNumberInField(3, 6, 8); 
+        spf.setNumberInField(6, 7, 3); 
+        spf.setNumberInField(5, 7, 5); 
+        spf.setNumberInField(2, 7, 8); 
+        spf.setNumberInField(2, 8, 1); 
+        spf.setNumberInField(1, 8, 2); 
+        spf.setNumberInField(8, 8, 3); 
+        spf.setNumberInField(7, 8, 7); 
+        spf.setNumberInField(5, 9, 2); 
+        spf.setNumberInField(3, 9, 3); 
+        spf.setNumberInField(4, 9, 6);
         
         /*
         f.setNumberInField(5, 1, 1);
@@ -82,10 +81,11 @@ public class SudokuSolver {
         f.setNumberInField(4, 9, 3);
         f.setNumberInField(8, 9, 4);
         */
-        
-        m.fieldScanner(spf);
-        
         System.out.println(spf.toString());
-        System.out.println(m.toString());
+        while(!spf.gameFinished()) {
+            m.fieldScanner(spf);
+            m.findLonelyNumber(spf);
+            System.out.println(spf.toString());
+        }
     }
 }
