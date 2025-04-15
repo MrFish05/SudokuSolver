@@ -229,10 +229,16 @@ public class Matrix {
         }
     }
     
-    public void horizontalUniqueNumber(int xPos, Field f) {
-        for(int x = 1; x <= 9; x++) {
+    public void horizontalUniqueNumber(int yPos, Field f) {
+        ArrayList<Integer> uniqueNumber = new ArrayList<>();
+        
+        for(int x = 1; x < 10; x++) {
             for(int i = 0; i < 9; i++) {
-                matrix[xPos][i].
+                for(int j = 0; j < matrix[i][yPos - 1].size(); j++) {
+                    if(matrix[i][yPos - 1].get(j).equals(x)) {
+                        uniqueNumber.add(x);
+                    }
+                }
             }
         }
     }
