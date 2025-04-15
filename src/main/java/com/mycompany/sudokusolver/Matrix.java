@@ -229,6 +229,14 @@ public class Matrix {
         }
     }
     
+    public void horizontalUniqueNumber(int xPos, Field f) {
+        for(int x = 1; x <= 9; x++) {
+            for(int i = 0; i < 9; i++) {
+                matrix[xPos][i].
+            }
+        }
+    }
+    
     @Override
     public String toString() {
         String x = "";
