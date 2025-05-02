@@ -11,10 +11,12 @@ package com.mycompany.sudokusolver;
 public class SudokuSolver {
 
     public static void main(String[] args) {
-        //Field f = new Field();
-        Matrix m = new Matrix();      
-        Field spf = new Field(); 
+        Field f = new Field();
+        Matrix m = new Matrix();    
         
+        //Field spf = new Field(); 
+        
+        /*
         spf.setNumberInField(4, 1, 4); 
         spf.setNumberInField(8, 1, 8); 
         spf.setNumberInField(7, 1, 9); 
@@ -53,8 +55,8 @@ public class SudokuSolver {
         spf.setNumberInField(5, 9, 2); 
         spf.setNumberInField(3, 9, 3); 
         spf.setNumberInField(4, 9, 6);
+        */
         
-        /*
         f.setNumberInField(5, 1, 1);
         f.setNumberInField(3, 1, 2);
         f.setNumberInField(2, 1, 4);
@@ -80,12 +82,27 @@ public class SudokuSolver {
         f.setNumberInField(9, 8, 8);
         f.setNumberInField(4, 9, 3);
         f.setNumberInField(8, 9, 4);
-        */
+        
+        /*
         System.out.println(spf.toString());
         while(!spf.gameFinished()) {
             m.fieldScanner(spf);
             m.findLonelyNumber(spf);
             System.out.println(spf.toString());
         }
+        */
+        
+        System.out.println(f.toString());
+        
+        m.fieldScanner(f);
+        m.findLonelyNumber(f);
+        
+        System.out.println(m.toString());
+        System.out.println(f.toString());
+        
+        m.verticalUniqueNumber(2, f);
+        
+        System.out.println(m.toString());
+        System.out.println(f.toString());
     }
 }

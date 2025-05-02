@@ -229,14 +229,49 @@ public class Matrix {
         }
     }
     
-    public void horizontalUniqueNumber(int yPos, Field f) {
-        ArrayList<Integer> uniqueNumber = new ArrayList<>();
+    public String horizontalUniqueNumber(int xPos, Field f) {
+        int count = 0;
+        for(int x = 1; x < 10; x++) {
+            for(int i = 0; i < 9; i++) {
+                for(int j = 0; j < matrix[xPos][i].size(); j++) {
+                    if(matrix[xPos][i].get(j) == x) {
+                        count++;
+                    }   
+                }
+            }
+            
+            if(count == 1) {
+                for(int a = 0; a < 9; a++) {
+                    for(int b = 0; b < matrix[xPos - 1][a].size(); b++) {
+                        if(matrix[xPos - 1][a].get(b) == x) {
+                            f.setNumberInField(x, xPos, a - 1);
+                        }
+                    }
+                }
+            }
+        }
+        
+        return ""+count;
+    }
+    
+    public void verticalUniqueNumber(int yPos, Field f) {
+        int count = 0;
         
         for(int x = 1; x < 10; x++) {
             for(int i = 0; i < 9; i++) {
                 for(int j = 0; j < matrix[i][yPos - 1].size(); j++) {
-                    if(matrix[i][yPos - 1].get(j).equals(x)) {
-                        uniqueNumber.add(x);
+                    if(matrix[i][yPos - 1].get(j) == x) {
+                        count++;
+                    }   
+                }
+            }
+            
+            if(count == 1) {
+                for(int a = 0; a < 9; a++) {
+                    for(int b = 0; b < matrix[a][yPos - 1].size(); b++) {
+                        if(matrix[a][yPos - 1].get(b) == x) {
+                            f.setNumberInField(x, a + 1, yPos);
+                        }
                     }
                 }
             }
