@@ -229,7 +229,7 @@ public class Matrix {
         }
     }
     
-    public String horizontalUniqueNumber(int xPos, Field f) {
+    public void horizontalUniqueNumber(int xPos, Field f) {
         int count = 0;
         for(int x = 1; x < 10; x++) {
             for(int i = 0; i < 9; i++) {
@@ -244,14 +244,12 @@ public class Matrix {
                 for(int a = 0; a < 9; a++) {
                     for(int b = 0; b < matrix[xPos - 1][a].size(); b++) {
                         if(matrix[xPos - 1][a].get(b) == x) {
-                            f.setNumberInField(x, xPos, a - 1);
+                            f.setNumberInField(x, xPos, a + 1);
                         }
                     }
                 }
             }
         }
-        
-        return ""+count;
     }
     
     public void verticalUniqueNumber(int yPos, Field f) {
