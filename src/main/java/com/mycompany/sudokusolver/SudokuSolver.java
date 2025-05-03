@@ -53,12 +53,20 @@ public class SudokuSolver {
         spf.setNumberInField(3, 9, 3); 
         spf.setNumberInField(4, 9, 6);
         
-        while(!spf.gameFinished()) {
+        int x = 0;
+        
+        while(x <= 1) {
+            System.out.println(spf.toString());
+            System.out.println(m.toString());
+            
             m.fieldScanner(spf);
             m.uniqueFieldScanner(spf);
             m.findLonelyNumber(spf);
             
             System.out.println(spf.toString());
+            System.out.println(m.toString());
+            
+            x++;
         }
     }
 }

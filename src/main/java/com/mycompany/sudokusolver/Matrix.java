@@ -389,8 +389,8 @@ public class Matrix {
     
     public void uniqueFieldScanner(Field f) {
         for(int i = 0; i < 9; i++) {
-            horizontalUniqueNumber(i + 1, f);
-            verticalUniqueNumber(i + 1, f);
+            //horizontalUniqueNumber(i + 1, f);
+            //verticalUniqueNumber(i + 1, f);
             quadrantUniqueNumbers(i + 1, f);
         }
     }
