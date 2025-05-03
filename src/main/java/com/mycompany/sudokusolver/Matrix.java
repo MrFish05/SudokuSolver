@@ -231,23 +231,36 @@ public class Matrix {
     
     public void horizontalUniqueNumber(int xPos, Field f) {
         int count = 0;
+        
         for(int x = 1; x < 10; x++) {
             for(int i = 0; i < 9; i++) {
-                for(int j = 0; j < matrix[xPos][i].size(); j++) {
-                    if(matrix[xPos][i].get(j) == x) {
+                for(int j = 0; j < matrix[xPos - 1][i].size(); j++) {
+                    if(matrix[xPos - 1][i].get(j) == x) {
                         count++;
                     }   
                 }
             }
             
             if(count == 1) {
+                //System.out.println(x+" is unique horizontal ["+count+"]");
+                
                 for(int a = 0; a < 9; a++) {
                     for(int b = 0; b < matrix[xPos - 1][a].size(); b++) {
                         if(matrix[xPos - 1][a].get(b) == x) {
                             f.setNumberInField(x, xPos, a + 1);
+                            matrix[xPos - 1][a].remove(b);
                         }
                     }
                 }
+            } else {
+                /*
+                if(x < 9) {
+                    System.out.println(x+" is not unique horizontal ["+count+"]");
+                } else {
+                    System.out.println(x+" is not unique horizontal ["+count+"]\n");
+                }
+                */
+                count = 0;
             }
         }
     }
@@ -265,14 +278,120 @@ public class Matrix {
             }
             
             if(count == 1) {
+                //System.out.println(x+" is unique vertical ["+count+"]");
+                
                 for(int a = 0; a < 9; a++) {
                     for(int b = 0; b < matrix[a][yPos - 1].size(); b++) {
                         if(matrix[a][yPos - 1].get(b) == x) {
                             f.setNumberInField(x, a + 1, yPos);
+                            matrix[a][yPos - 1].remove(b);
                         }
                     }
                 }
+            } else {
+                /*
+                if(x < 9) {
+                    System.out.println(x+" is not unique vertical ["+count+"]");
+                } else {
+                    System.out.println(x+" is not unique vertical ["+count+"]\n");
+                }
+                */
+                count = 0;
             }
+        }
+    }
+    
+    public void quadrantUniqueNumbers(int quadrantNumber, Field f) {
+        int xPos = 0;
+        int yPos = 0;
+        
+        int count = 0;
+        
+        switch(quadrantNumber) {
+            case 1:
+                xPos = 0;
+                yPos = 0;
+                break;
+            case 2:
+                xPos = 0;
+                yPos = 3;
+                break;
+            case 3:
+                xPos = 0;
+                yPos = 6;
+                break;
+            case 4:
+                xPos = 3;
+                yPos = 0;
+                break;
+            case 5:
+                xPos = 3;
+                yPos = 3;
+                break;
+            case 6:
+                xPos = 3;
+                yPos = 6;
+                break;
+            case 7:
+                xPos = 6;
+                yPos = 0;
+                break;
+            case 8:
+                xPos = 6;
+                yPos = 3;
+                break;
+            case 9:
+                xPos = 6;
+                yPos = 6;
+                break;
+            default:
+                System.out.println("ERROR: Quadrant dos not exist!");
+                break;
+        }
+        
+        for(int x = 1; x < 10; x++) {
+            for(int i = xPos; i < xPos + 3; i++) {
+                for(int j = yPos; j < yPos + 3; j++) {
+                    for(int k = 0; k < matrix[i][j].size(); k++) {
+                        if(matrix[i][j].get(k) == x) {
+                            count++;
+                        } 
+                    }
+                }
+            }
+            
+            if(count == 1) {
+                //System.out.println(x+" is unique quadrant ["+count+"]");
+                
+                for(int i = xPos; i < xPos + 3; i++) {
+                    for(int j = yPos; j < yPos + 3; j++) {
+                        for(int k = 0; k < matrix[i][j].size(); k++) {
+                            if(matrix[i][j].get(k) == x) {
+                                f.setNumberInField(x, xPos + 1, yPos + 1);
+                                matrix[i][j].remove(k);
+                            } 
+                        }
+                    }
+                }
+            } else {
+                /*
+                if(x < 9) {
+                    System.out.println(x+" is not unique quadrant ["+count+"]");
+                } else {
+                    System.out.println(x+" is not unique quadrant ["+count+"]\n");
+                }
+                */
+                count = 0;
+            }
+        }
+        
+    }
+    
+    public void uniqueFieldScanner(Field f) {
+        for(int i = 0; i < 9; i++) {
+            horizontalUniqueNumber(i + 1, f);
+            verticalUniqueNumber(i + 1, f);
+            quadrantUniqueNumbers(i + 1, f);
         }
     }
     
