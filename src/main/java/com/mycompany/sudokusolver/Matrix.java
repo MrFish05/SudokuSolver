@@ -15,7 +15,7 @@ public class Matrix {
     private ArrayList<Integer> matrixNumber;
     
     /**
-     * Creates a Matrix - Array and fills it with numbers
+     * creates a matrix [Array] filled with number from 1 - 9
      */
     public Matrix() {
         this.matrix = new ArrayList[9][9];
@@ -32,28 +32,28 @@ public class Matrix {
     }
     
     /**
-     * Removes a specific number in a specific field at its cordinates
-     * @param number
-     * @param xPos
-     * @param yPos 
+     * removes a specific number from the given position
+     * @param yPos y position
+     * @param xPos x position
+     * @param number number that is going to be removed
      */
-    public void removeNumberFromMatrix(int number, int xPos, int yPos) {
-        if(number <= 9 && number >= 1) {
-            if(xPos < 10 && xPos > 0) {
-                if(yPos < 10 && yPos > 0) {
-                    for(int i = 0; i < matrix[xPos - 1][yPos - 1].size(); i++) {
-                        if(matrix[xPos - 1][yPos - 1].get(i).equals(number)) {
-                            matrix[xPos - 1][yPos - 1].remove(i);
+    public void removeNumberFromMatrix(int yPos, int xPos, int number) {
+        if(number < 10 && number > 0) {
+            if(yPos < 10 && yPos > 0) {
+                if(xPos < 10 && xPos > 0) {
+                    for(int i = 0; i < matrix[yPos - 1][xPos - 1].size(); i++) {
+                        if(matrix[yPos - 1][xPos - 1].get(i).equals(number)) {
+                            matrix[yPos - 1][xPos - 1].remove(i);
                         }
                     }
                 } else {
-                    System.out.println("ERROR: wrong yPos ["+yPos+"]!");
+                    System.out.println("ERROR: wrong xPos value ["+xPos+"]!");
                 }
             } else {
-                System.out.println("ERROR: wrong xPos ["+xPos+"]!");
+                System.out.println("ERROR: wrong yPos value ["+yPos+"]!");
             }
         } else {
-            System.out.println("ERROR: wrong number ["+number+"]!");
+            System.out.println("ERROR: wrong number size ["+number+"]!");
         }
     }
     
@@ -108,7 +108,7 @@ public class Matrix {
      * @param xPos
      * @param yPos 
      */
-    public void removeAllNumbersInMatrix(int xPos, int yPos) {
+    public void removeAllNumbersInMatrix(int yPos, int xPos) {
         if(xPos < 10 && xPos > 0) {
                 if(yPos < 10 && yPos > 0) {
                     this.matrix[xPos - 1][yPos - 1].clear();
@@ -242,24 +242,25 @@ public class Matrix {
             }
             
             if(count == 1) {
-                //System.out.println(x+" is unique horizontal ["+count+"]");
+                System.out.println(x+" is unique horizontal ["+count+"]");
                 
                 for(int a = 0; a < 9; a++) {
                     for(int b = 0; b < matrix[xPos - 1][a].size(); b++) {
                         if(matrix[xPos - 1][a].get(b) == x) {
                             f.setNumberInField(x, xPos, a + 1);
-                            matrix[xPos - 1][a].remove(b);
+                            
+                            removeNumberInCol(x, a);
                         }
                     }
                 }
             } else {
-                /*
+                
                 if(x < 9) {
                     System.out.println(x+" is not unique horizontal ["+count+"]");
                 } else {
                     System.out.println(x+" is not unique horizontal ["+count+"]\n");
                 }
-                */
+                
                 count = 0;
             }
         }
@@ -278,24 +279,25 @@ public class Matrix {
             }
             
             if(count == 1) {
-                //System.out.println(x+" is unique vertical ["+count+"]");
+                System.out.println(x+" is unique vertical ["+count+"]");
                 
                 for(int a = 0; a < 9; a++) {
                     for(int b = 0; b < matrix[a][yPos - 1].size(); b++) {
                         if(matrix[a][yPos - 1].get(b) == x) {
                             f.setNumberInField(x, a + 1, yPos);
-                            matrix[a][yPos - 1].remove(b);
+                            
+                            removeNumberInRow(x, a + 1);
                         }
                     }
                 }
             } else {
-                /*
+                
                 if(x < 9) {
                     System.out.println(x+" is not unique vertical ["+count+"]");
                 } else {
                     System.out.println(x+" is not unique vertical ["+count+"]\n");
                 }
-                */
+                
                 count = 0;
             }
         }
@@ -353,34 +355,43 @@ public class Matrix {
             for(int i = xPos; i < xPos + 3; i++) {
                 for(int j = yPos; j < yPos + 3; j++) {
                     for(int k = 0; k < matrix[i][j].size(); k++) {
-                        if(matrix[i][j].get(k) == x) {
+                        if(matrix[i][j].get(k).equals(x)) {
                             count++;
-                        } 
+                            
+                            //System.out.println(x+": "+count);
+                        }
                     }
                 }
             }
             
             if(count == 1) {
-                //System.out.println(x+" is unique quadrant ["+count+"]");
+                System.out.println(x+" is unique quadrant ["+count+"]");
                 
                 for(int i = xPos; i < xPos + 3; i++) {
                     for(int j = yPos; j < yPos + 3; j++) {
                         for(int k = 0; k < matrix[i][j].size(); k++) {
                             if(matrix[i][j].get(k) == x) {
-                                f.setNumberInField(x, xPos + 1, yPos + 1);
+                                System.out.println(x+"["+i+"]"+"["+j+"]");
+                                
+                                f.setNumberInField(x, i + 1, j + 1);
+                                
+                                //removeNumberInRow(x, i);
+                                
                                 matrix[i][j].remove(k);
                             } 
                         }
                     }
                 }
+                
+                count = 0;
             } else {
-                /*
+                
                 if(x < 9) {
                     System.out.println(x+" is not unique quadrant ["+count+"]");
                 } else {
                     System.out.println(x+" is not unique quadrant ["+count+"]\n");
                 }
-                */
+                
                 count = 0;
             }
         }
@@ -389,8 +400,8 @@ public class Matrix {
     
     public void uniqueFieldScanner(Field f) {
         for(int i = 0; i < 9; i++) {
-            //horizontalUniqueNumber(i + 1, f);
-            //verticalUniqueNumber(i + 1, f);
+            horizontalUniqueNumber(i + 1, f);
+            verticalUniqueNumber(i + 1, f);
             quadrantUniqueNumbers(i + 1, f);
         }
     }

@@ -12,38 +12,38 @@ public class Field {
     private int[][] field;
     
     /**
-     * Creates a empty field
+     * creates a empty 9x9 field
      */
     public Field() {
         this.field = new int[9][9];
     }
     
     /**
-     * Sets a number inside the field at the xPos and yPos
-     * @param number
-     * @param xPos
-     * @param yPos 
+     * sets a number inside the field at the yPos and xPos
+     * @param yPos y position
+     * @param xPos x position
+     * @param number number that is going to be added
      */
-    public void setNumberInField(int number, int xPos, int yPos) {
-        if(number <= 9 && number >= 1) {
-            if(xPos < 10 && xPos > 0) {
-                if(yPos < 10 && yPos > 0) {
-                    this.field[xPos - 1][yPos - 1] = number;
+    public void setNumberInField(int yPos, int xPos, int number) {
+        if(number < 10 && number > 0) {
+            if(yPos < 10 && yPos > 0) {
+                if(xPos < 10 && xPos > 0) {
+                    this.field[yPos - 1][xPos - 1] = number;
                 } else {
-                    System.out.println("ERROR: wrong yPos ["+yPos+"]!");
+                    System.out.println("ERROR: wrong xPos value ["+xPos+"]!");
                 }
             } else {
-                System.out.println("ERROR: wrong xPos ["+xPos+"]!");
+                System.out.println("ERROR: wrong yPos value ["+yPos+"]!");
             }
         } else {
-            System.out.println("ERROR: wrong number ["+number+"]!");
+            System.out.println("ERROR: wrong number size ["+number+"]!");
         }
     }
     
-    public int[][] getField() {
-        return this.field;
-    }
-    
+    /**
+     * check if game is finished
+     * @return game status
+     */
     public boolean gameFinished() {
         int x = 0;
         
@@ -63,7 +63,15 @@ public class Field {
     }
     
     /**
-     * Prints the field with its values
+     * gives the field
+     * @return field
+     */
+    public int[][] getField() {
+        return this.field;
+    }
+    
+    /**
+     * prints the field
      * @return field
      */
     @Override
