@@ -104,20 +104,20 @@ public class Matrix {
     }
     
     /**
-     * Removes all Numbers in the specific Field at its cordinates
-     * @param xPos
-     * @param yPos 
+     * removes all numbers from the matrix at the given position
+     * @param yPos x position [yPos - 1]
+     * @param xPos y position [xPos - 1]
      */
     public void removeAllNumbersInMatrix(int yPos, int xPos) {
-        if(xPos < 10 && xPos > 0) {
-                if(yPos < 10 && yPos > 0) {
-                    this.matrix[xPos - 1][yPos - 1].clear();
-                } else {
-                    System.out.println("ERROR: wrong yPos ["+yPos+"]!");
-                }
+        if(yPos < 10 && yPos > 0) {
+            if(xPos < 10 && xPos > 0) {
+                this.matrix[yPos - 1][xPos - 1].clear();
             } else {
-                System.out.println("ERROR: wrong xPos ["+xPos+"]!");
+                System.out.println("ERROR: wrong xPos value ["+xPos+"]!");
             }
+        } else {
+            System.out.println("ERROR: wrong yPos value ["+yPos+"]!");
+        }
     }
     
     /**

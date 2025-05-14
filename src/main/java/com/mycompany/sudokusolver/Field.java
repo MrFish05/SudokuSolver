@@ -20,8 +20,8 @@ public class Field {
     
     /**
      * sets a number inside the field at the yPos and xPos
-     * @param yPos y position
-     * @param xPos x position
+     * @param yPos y position [yPos - 1]
+     * @param xPos x position [xPos - 1]
      * @param number number that is going to be added
      */
     public void setNumberInField(int yPos, int xPos, int number) {
