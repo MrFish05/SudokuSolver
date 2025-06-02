@@ -53,6 +53,16 @@ public class SudokuSolver {
         f.setNumberInField(9, 3, 3);
         f.setNumberInField(9, 6, 4);
         
+        m.fieldScanner(f);
+        System.out.println(m.toString());
+        
+        System.out.println(f.toString());
+
+        m.uniqueFieldScanner(f);
+        //m.uniqueFieldScanner(f);
+        
+        //m.findLonelyNumber(f);
+        
         System.out.println(f.toString());
         System.out.println(m.toString());
     }
