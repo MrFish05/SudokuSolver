@@ -60,18 +60,5 @@ public class SudokuSolver {
             m.uniqueFieldScanner(f);
             System.out.println(f.toString());
         }
-        //System.out.println(f.toString());
-//        m.fieldScanner(f);
-//        System.out.println(m.toString());
-//        
-//        System.out.println(f.toString());
-//
-//        m.uniqueFieldScanner(f);
-//        m.uniqueFieldScanner(f);
-//        
-//        //m.findLonelyNumber(f);
-//        
-//        System.out.println(f.toString());
-//        System.out.println(m.toString());
     }
 }

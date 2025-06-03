@@ -72,7 +72,7 @@ public class Field {
     
     /**
      * prints the field
-     * @return field
+     * @return field to string
      */
     @Override
     public String toString() {

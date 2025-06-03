@@ -183,6 +183,10 @@ public class Matrix {
         }
     }
     
+    /**
+     * scans the field and inputs the existing numbers in the matrix, he also updates the matrix, so that the implemented numbers are also deleted int there row and coll
+     * @param f input field
+     */
     public void fieldScanner(Field f) {
         for(int i = 0; i < 9; i++) {
             for(int j = 0; j < 9; j++) {
@@ -217,7 +221,7 @@ public class Matrix {
     
     /**
      * Searches for numbers that are lonely in the Matrix and sets them into the game Field
-     * @param f 
+     * @param f input field 
      */
     public void findLonelyNumber(Field f) {
         for(int i = 0; i < 9; i++) {
@@ -230,6 +234,11 @@ public class Matrix {
         }
     }
     
+    /**
+     * finds the unique number in the matrix in the given row
+     * @param xPos input row 8 [xPos - 1]
+     * @param f input field
+     */
     public void horizontalUniqueNumber(int xPos, Field f) {
         int count = 0;
         
@@ -268,6 +277,11 @@ public class Matrix {
         }
     }
     
+    /**
+     * finds the unique number in the matrix in the given coll
+     * @param yPos input row 8 [xPos - 1]
+     * @param f input field
+     */
     public void verticalUniqueNumber(int yPos, Field f) {
         int count = 0;
         
@@ -306,6 +320,11 @@ public class Matrix {
         }
     }
     
+    /**
+     * finds the unique number in the matrix in the given quadrant [1 - 9]
+     * @param quadrantNumber input quadrant number
+     * @param f input field
+     */
     public void quadrantUniqueNumbers(int quadrantNumber, Field f) {
         int xPos = 0;
         int yPos = 0;
@@ -403,6 +422,10 @@ public class Matrix {
         
     }
     
+    /**
+     * scans the matrix and inputs the unique numbers in the field, he verifies also the row, coll and quadrant
+     * @param f input the field
+     */
     public void uniqueFieldScanner(Field f) {
         for(int i = 0; i < 9; i++) {
             horizontalUniqueNumber(i + 1, f);
@@ -411,6 +434,10 @@ public class Matrix {
         }
     }
     
+    /**
+     * prints the matrix
+     * @return matrix to string
+     */
     @Override
     public String toString() {
         String x = "";
